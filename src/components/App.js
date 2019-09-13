@@ -1,12 +1,22 @@
 import React from "react";
 
-function App(props) {
-  return (
-    <div>
-      <h1>{props.location.name}</h1>
-      <div>{props.location.basalMetabolism}</div>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    person: {}
+  };
+
+  componentDidMount() {
+    this.setState({ person });
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>{this.props.location.name}</h1>
+        <div>{this.props.location.basalMetabolism}</div>
+      </div>
+    );
+  }
 }
 
 export default App;

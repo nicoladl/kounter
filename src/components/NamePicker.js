@@ -11,7 +11,7 @@ class NamePicker extends React.Component {
   calculateBasalMetabolism = e => {
     // block event
     e.preventDefault();
-    // get input value
+    // get input value and store into object
     const person = {
       name: slugify(this.nameFromInput.current.value),
       weight: this.weightFromInput.current.value,
@@ -24,7 +24,7 @@ class NamePicker extends React.Component {
     this.props.history.push({
       pathname: `/counter/${person.name}`,
       basalMetabolism: basalMetabolismCalculation(person), // calculation
-      name: person.name
+      person
     });
   };
 
