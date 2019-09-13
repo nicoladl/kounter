@@ -20,10 +20,11 @@ class NamePicker extends React.Component {
       height: this.heightFromInput.current.value
     };
 
+    person.basalMetabolism = basalMetabolismCalculation(person) // calculation
+
     // go to new route with params
     this.props.history.push({
       pathname: `/counter/${person.name}`,
-      basalMetabolism: basalMetabolismCalculation(person), // calculation
       person
     });
   };

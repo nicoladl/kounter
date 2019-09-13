@@ -22,7 +22,6 @@ export const slugify = string => {
 };
 
 export const basalMetabolismCalculation = ({ weight, height, age, gender }) => {
-  console.log(weight, height, age, gender);
   let basalMetabolism = 0;
   switch (gender) {
     case "male": {
