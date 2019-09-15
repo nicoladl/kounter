@@ -1,16 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PersonResume from "./PersonResume";
+import Profile from "./Profile";
 
 class App extends React.Component {
   state = {
-    person: {}
+    profile: {},
+    food: {}
   };
 
   // save or update to State
   componentDidMount() {
     const localStorageRef = localStorage.getItem(this.props.match.params.name);
-    this.setState({ person: JSON.parse(localStorageRef) });
+    this.setState({ profile: JSON.parse(localStorageRef) });
   }
 
   checkStatus() {
@@ -21,9 +22,24 @@ class App extends React.Component {
     return showProfile;
   }
 
+  addToList = meal => {
+    // copy state
+    const food = { ...this.state.food };
+    // add item to list
+    food[`meal${Date.now()}`] = meal;
+    // update state
+    this.setState({ food });
+  };
+
   render() {
     if (this.checkStatus()) {
-      return <PersonResume personData={this.state.person} />;
+      return (
+        <Profile
+          profile={this.state.profile}
+          state={this.state}
+          addToList={this.addToList}
+        />
+      );
     }
     return <Link to="/">back to data</Link>;
   }

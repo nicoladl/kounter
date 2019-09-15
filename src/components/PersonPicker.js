@@ -12,23 +12,24 @@ class NamePicker extends React.Component {
     // block event
     e.preventDefault();
     // get input value and store into object
-    const person = {
-      name: slugify(this.nameFromInput.current.value),
+    const profile = {
+      name: this.nameFromInput.current.value,
+      slug: slugify(this.nameFromInput.current.value),
       weight: this.weightFromInput.current.value,
       gender: this.genderFromInput.current.value,
       age: this.ageFromInput.current.value,
       height: this.heightFromInput.current.value
     };
 
-    person.basalMetabolism = basalMetabolismCalculation(person); // calculation
+    profile.basalMetabolism = basalMetabolismCalculation(profile); // calculation
 
     // save or update to LocalStorage
-    localStorage.setItem(person.name, JSON.stringify(person));
+    localStorage.setItem(profile.slug, JSON.stringify(profile));
 
     // go to new route with params
     this.props.history.push({
-      pathname: `/counter/${person.name}`,
-      person
+      pathname: `/counter/${profile.slug}`,
+      profile
     });
   };
 
