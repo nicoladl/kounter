@@ -20,7 +20,10 @@ class NamePicker extends React.Component {
       height: this.heightFromInput.current.value
     };
 
-    person.basalMetabolism = basalMetabolismCalculation(person) // calculation
+    person.basalMetabolism = basalMetabolismCalculation(person); // calculation
+
+    // save or update to LocalStorage
+    localStorage.setItem(person.name, JSON.stringify(person));
 
     // go to new route with params
     this.props.history.push({

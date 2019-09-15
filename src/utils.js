@@ -38,5 +38,5 @@ export const basalMetabolismCalculation = ({ weight, height, age, gender }) => {
       break;
   }
 
-  return basalMetabolism;
+  return parseInt(basalMetabolism);
 };

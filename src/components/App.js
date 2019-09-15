@@ -1,41 +1,31 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import PersonResume from "./PersonResume";
 
 class App extends React.Component {
   state = {
     person: {}
   };
-  
-  componentDidMount() {
-    // check if we are from {PersonPicker} or not
-    if (this.props.location.person) {
-      // save data to localStorage
-      localStorage.setItem(
-        this.props.location.person.name,
-        JSON.stringify(this.props.location.person)
-        )
 
-      // save to state
-      this.setState({person: this.props.location.person});
-    } else {
-      // get data from localStorage
-      const localStorageRef = localStorage.getItem(this.props.match.params.name);
-      if (localStorageRef) {
-        // save to state
-        this.setState({person: JSON.parse(localStorageRef)});
-      } else {
-        // back to {PersonPicker}
-        console.log('back to PersonPicker')
-      }
-    }
+  // save or update to State
+  componentDidMount() {
+    const localStorageRef = localStorage.getItem(this.props.match.params.name);
+    this.setState({ person: JSON.parse(localStorageRef) });
+  }
+
+  checkStatus() {
+    const localStorageRef = localStorage.getItem(this.props.match.params.name);
+    let showProfile = true;
+    // if localStora exist show Profile else show BackToPicker
+    localStorageRef ? (showProfile = true) : (showProfile = false);
+    return showProfile;
   }
 
   render() {
-    return (
-      <div>
-        <h1>Hi {this.state.person.name}</h1>
-        <div>This is your basal metabolism {this.state.person.basalMetabolism}</div>
-      </div>
-    );
+    if (this.checkStatus()) {
+      return <PersonResume personData={this.state.person} />;
+    }
+    return <Link to="/">back to data</Link>;
   }
 }
 
