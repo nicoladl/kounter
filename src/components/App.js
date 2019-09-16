@@ -5,7 +5,8 @@ import Profile from "./Profile";
 class App extends React.Component {
   state = {
     profile: {},
-    food: {}
+    food: [],
+    totalKcal: 0
   };
 
   // save or update to State
@@ -24,9 +25,9 @@ class App extends React.Component {
 
   addToList = meal => {
     // copy state
-    const food = { ...this.state.food };
+    const food = [...this.state.food];
     // add item to list
-    food[`meal${Date.now()}`] = meal;
+    food.push(meal);
     // update state
     this.setState({ food });
   };
@@ -38,6 +39,7 @@ class App extends React.Component {
           profile={this.state.profile}
           state={this.state}
           addToList={this.addToList}
+          calcTotalKcal={this.calcTotalKcal}
         />
       );
     }
