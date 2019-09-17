@@ -20,9 +20,10 @@ class AddMealForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.addToList}>
-        <input name="meal" type="text" ref={this.mealFromInput} />
-        <input name="kcal" type="number" ref={this.kcalFromInput} />
-
+        nome <input name="meal" type="text" ref={this.mealFromInput} />
+        <br />
+        kcal <input name="kcal" type="number" ref={this.kcalFromInput} />
+        <br />
         <button>add</button>
       </form>
     );

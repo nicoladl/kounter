@@ -5,8 +5,7 @@ import Profile from "./Profile";
 class App extends React.Component {
   state = {
     profile: {},
-    food: [],
-    totalKcal: 0
+    food: []
   };
 
   // save or update to State
@@ -28,6 +27,10 @@ class App extends React.Component {
     const food = [...this.state.food];
     // add item to list
     food.push(meal);
+    // calc total kcal
+    this.total = food.reduce((sum, item) => {
+      return sum + parseInt(item.kcal);
+    }, 0);
     // update state
     this.setState({ food });
   };
@@ -40,6 +43,7 @@ class App extends React.Component {
           state={this.state}
           addToList={this.addToList}
           calcTotalKcal={this.calcTotalKcal}
+          total={this.total}
         />
       );
     }

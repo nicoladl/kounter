@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import AddMealForm from "./AddMealForm";
 import MealList from "./MealList";
-import MealTotalKcal from "./MealTotalKcal";
 
 class PersonResume extends React.Component {
   render() {
@@ -24,7 +23,7 @@ class PersonResume extends React.Component {
 
         <AddMealForm addToList={this.props.addToList} />
         <MealList meal={this.props.state.food} />
-        <MealTotalKcal meal={this.props.state.food} />
+        {this.props.total ? <p>Total {this.props.total}kcal</p> : null}
       </Fragment>
     );
   }
