@@ -38,7 +38,12 @@ class NamePicker extends React.Component {
       <form onSubmit={this.calculateBasalMetabolism}>
         <label>
           Name:
-          <input type="text" name="name" ref={this.nameFromInput} />
+          <input
+            type="text"
+            name="name"
+            ref={this.nameFromInput}
+            value={this.props.location.slug}
+          />
         </label>
         <label>
           Weight:
