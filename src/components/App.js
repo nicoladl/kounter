@@ -29,7 +29,7 @@ class App extends React.Component {
     food.push(meal);
     // calc total kcal
     this.total = food.reduce((sum, item) => {
-      return sum + parseInt(item.kcal);
+      return sum + item.kcal;
     }, 0);
     // update state
     this.setState({ food });
