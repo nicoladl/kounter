@@ -29,10 +29,26 @@ class Profile extends React.Component {
             state={this.props.state}
           />
           <MealList meal={this.props.state.food} />
+
           {this.props.state.total ? (
-            <p>
-              Total: <strong>{this.props.state.total}kcal</strong>
-            </p>
+            <div>
+              <p>Total in: {this.props.state.total}kcal</p>
+              <p>
+                Total amount of calories:{" "}
+                <strong>
+                  {this.props.state.total -
+                    this.props.profile.basalMetabolism.value}
+                  Kcal{" "}
+                  {this.props.state.total -
+                    this.props.profile.basalMetabolism.value >
+                  0 ? (
+                    <span>&#128533;</span>
+                  ) : (
+                    <span>&#128515;</span>
+                  )}
+                </strong>
+              </p>
+            </div>
           ) : null}
         </Fragment>
       );

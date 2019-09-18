@@ -38,8 +38,8 @@ class NamePicker extends React.Component {
         visibleOnProfile: true
       },
       basalMetabolism: {
-        value: "",
-        visibleOnProfile: false
+        value: 0,
+        visibleOnProfile: true
       }
     };
 
