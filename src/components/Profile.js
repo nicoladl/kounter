@@ -3,21 +3,24 @@ import { Link } from "react-router-dom";
 import AddMealForm from "./AddMealForm";
 import MealList from "./MealList";
 
-class PersonResume extends React.Component {
+class Profile extends React.Component {
   render() {
     return (
       <Fragment>
-        <h1>Hi {this.props.profile.name}</h1>
-        <Link to={{ pathname: "/", slug: this.props.profile.slug }}>
+        <h1>Hi {this.props.profile.name.value}</h1>
+        <Link to={{ pathname: "/", name: this.props.profile.name.value }}>
           edit profile
         </Link>
-        <ul>
-          {Object.keys(this.props.profile).map(key => (
-            <li key={key}>
-              {key}: {this.props.profile[key]}
-            </li>
-          ))}
-        </ul>
+        {/* <ul>
+          {Object.keys(this.props.profile).map(
+            key => console.log(this.props.profile)
+            // if (this.props.profile[key].visibleOnProfile) {
+            //   <li key={key}>
+            //     {key}: {this.props.profile[key]}
+            //   </li>;
+            // }
+          )}
+        </ul> */}
 
         <AddMealForm addToList={this.props.addToList} />
         <MealList meal={this.props.state.food} />
@@ -31,4 +34,4 @@ class PersonResume extends React.Component {
   }
 }
 
-export default PersonResume;
+export default Profile;

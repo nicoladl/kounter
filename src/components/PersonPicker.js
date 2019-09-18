@@ -13,22 +13,45 @@ class NamePicker extends React.Component {
     e.preventDefault();
     // get input value and store into object
     const profile = {
-      name: this.nameFromInput.current.value,
-      slug: slugify(this.nameFromInput.current.value),
-      weight: this.weightFromInput.current.value,
-      gender: this.genderFromInput.current.value,
-      age: this.ageFromInput.current.value,
-      height: this.heightFromInput.current.value
+      name: {
+        value: this.nameFromInput.current.value,
+        visibleOnProfile: false
+      },
+      slug: {
+        value: slugify(this.nameFromInput.current.value),
+        visibleOnProfile: false
+      },
+      weight: {
+        value: this.weightFromInput.current.value,
+        visibleOnProfile: true
+      },
+      gender: {
+        value: this.genderFromInput.current.value,
+        visibleOnProfile: true
+      },
+      age: {
+        value: this.ageFromInput.current.value,
+        visibleOnProfile: true
+      },
+      height: {
+        value: this.heightFromInput.current.value,
+        visibleOnProfile: true
+      },
+      basalMetabolism: {
+        value: "",
+        visibleOnProfile: false
+      }
     };
 
-    profile.basalMetabolism = basalMetabolismCalculation(profile); // calculation
+    // calculate basal metabolism and update profile obj
+    profile.basalMetabolism.value = basalMetabolismCalculation(profile); // calculation
 
     // save or update to LocalStorage
-    localStorage.setItem(profile.slug, JSON.stringify(profile));
+    localStorage.setItem(profile.slug.value, JSON.stringify(profile));
 
-    // go to new route with params
+    // go to new route with params profile obj
     this.props.history.push({
-      pathname: `/counter/${profile.slug}`,
+      pathname: `/counter/${profile.slug.value}`,
       profile
     });
   };
@@ -42,7 +65,7 @@ class NamePicker extends React.Component {
             type="text"
             name="name"
             ref={this.nameFromInput}
-            value={this.props.location.slug}
+            defaultValue={this.props.location.name}
           />
         </label>
         <label>

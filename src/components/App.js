@@ -8,7 +8,6 @@ class App extends React.Component {
     food: []
   };
 
-  // save or update to State
   componentDidMount() {
     const localStorageRef = localStorage.getItem(this.props.match.params.name);
     this.setState({ profile: JSON.parse(localStorageRef) });
@@ -42,7 +41,6 @@ class App extends React.Component {
           profile={this.state.profile}
           state={this.state}
           addToList={this.addToList}
-          calcTotalKcal={this.calcTotalKcal}
           total={this.total}
         />
       );

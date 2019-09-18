@@ -23,14 +23,16 @@ export const slugify = string => {
 
 export const basalMetabolismCalculation = ({ weight, height, age, gender }) => {
   let basalMetabolism = 0;
-  switch (gender) {
+  switch (gender.value) {
     case "male": {
-      basalMetabolism = 66 + 13.7 * weight + 5 * height - 6.8 * age;
+      basalMetabolism =
+        66 + 13.7 * weight.value + 5 * height.value - 6.8 * age.value;
       break;
     }
 
     case "female": {
-      basalMetabolism = 665 + 9.6 * weight + 1.9 * height - 4.7 * age;
+      basalMetabolism =
+        665 + 9.6 * weight.value + 1.9 * height.value - 4.7 * age.value;
       break;
     }
 
