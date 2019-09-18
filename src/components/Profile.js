@@ -24,11 +24,14 @@ class Profile extends React.Component {
             })}
           </ul>
 
-          <AddMealForm addToList={this.props.addToList} />
+          <AddMealForm
+            addToList={this.props.addToList}
+            state={this.props.state}
+          />
           <MealList meal={this.props.state.food} />
-          {this.props.total ? (
+          {this.props.state.total ? (
             <p>
-              Total: <strong>{this.props.total}kcal</strong>
+              Total: <strong>{this.props.state.total}kcal</strong>
             </p>
           ) : null}
         </Fragment>

@@ -21,17 +21,9 @@ class App extends React.Component {
     return showProfile;
   }
 
-  addToList = meal => {
-    // copy state
-    const food = [...this.state.food];
-    // add item to list
-    food.push(meal);
-    // calc total kcal
-    this.total = food.reduce((sum, item) => {
-      return sum + item.kcal;
-    }, 0);
+  addToList = (food, total) => {
     // update state
-    this.setState({ food });
+    this.setState({ food, total });
   };
 
   render() {

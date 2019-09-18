@@ -12,7 +12,17 @@ class AddMealForm extends React.Component {
       name: this.mealFromInput.current.value,
       kcal: parseInt(this.kcalFromInput.current.value)
     };
-    this.props.addToList(meal);
+
+    // copy state
+    const food = [...this.props.state.food];
+    // add item to list
+    food.push(meal);
+    // calc total kcal
+    const total = food.reduce((sum, item) => {
+      return sum + item.kcal;
+    }, 0);
+    // update state
+    this.props.addToList(food, total);
     // refresh the form
     e.currentTarget.reset();
   };
