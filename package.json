@@ -2,8 +2,10 @@
   "name": "kounter",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://nicoladl.github.io/kounter",
   "dependencies": {
     "firebase": "^6.6.1",
+    "gh-pages": "^2.1.1",
     "re-base": "^4.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -14,7 +16,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
