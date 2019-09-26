@@ -71,7 +71,7 @@ class NamePicker extends React.Component {
         <br />
         <label>
           Weight:
-          <input type="text" name="weight" ref={this.weightFromInput} />
+          <input type="number" name="weight" ref={this.weightFromInput} />
         </label>
         <br />
         <label>
@@ -84,7 +84,7 @@ class NamePicker extends React.Component {
         <br />
         <label>
           age:
-          <input type="text" name="age" ref={this.ageFromInput} />
+          <input type="number" name="age" ref={this.ageFromInput} />
         </label>
         <br />
         <label>
