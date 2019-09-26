@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/nicoladl/kounter/static/js/main.6712e86e.chunk.js",
+    "main.js.map": "/nicoladl/kounter/static/js/main.6712e86e.chunk.js.map",
+    "runtime~main.js": "/nicoladl/kounter/static/js/runtime~main.a1be4bfc.js",
+    "runtime~main.js.map": "/nicoladl/kounter/static/js/runtime~main.a1be4bfc.js.map",
+    "static/js/2.d9a43901.chunk.js": "/nicoladl/kounter/static/js/2.d9a43901.chunk.js",
+    "static/js/2.d9a43901.chunk.js.map": "/nicoladl/kounter/static/js/2.d9a43901.chunk.js.map",
+    "index.html": "/nicoladl/kounter/index.html",
+    "precache-manifest.6eb6aac837363d1cded8a5a452f0d30d.js": "/nicoladl/kounter/precache-manifest.6eb6aac837363d1cded8a5a452f0d30d.js",
+    "service-worker.js": "/nicoladl/kounter/service-worker.js"
+  }
+}
