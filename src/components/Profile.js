@@ -42,9 +42,13 @@ class Profile extends React.Component {
                   {this.props.state.total -
                     this.props.profile.basalMetabolism.value >
                   0 ? (
-                    <span>&#128533;</span>
+                    <span role="img" aria-label="happy">
+                      &#128533;
+                    </span>
                   ) : (
-                    <span>&#128515;</span>
+                    <span role="img" aria-label="sad">
+                      &#128515;
+                    </span>
                   )}
                 </strong>
               </p>

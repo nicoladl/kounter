@@ -68,10 +68,12 @@ class NamePicker extends React.Component {
             defaultValue={this.props.location.name}
           />
         </label>
+        <br />
         <label>
           Weight:
           <input type="text" name="weight" ref={this.weightFromInput} />
         </label>
+        <br />
         <label>
           Name:
           <select ref={this.genderFromInput}>
@@ -79,15 +81,17 @@ class NamePicker extends React.Component {
             <option value="female">female</option>
           </select>
         </label>
+        <br />
         <label>
           age:
           <input type="text" name="age" ref={this.ageFromInput} />
         </label>
-
+        <br />
         <label>
           height:
           <input type="number" name="height" ref={this.heightFromInput} />
         </label>
+        <br />
 
         <button type="submit">Calculate</button>
       </form>
