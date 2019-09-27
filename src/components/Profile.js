@@ -24,7 +24,8 @@ class Profile extends React.Component {
                 return (
                   // show on profile
                   <li key={key}>
-                    {key}: {profile[key].value}
+                    {key}: {profile[key].value} {key === "weight" ? "kg" : null}
+                    {key === "height" ? "cm" : null}
                   </li>
                 );
               }
