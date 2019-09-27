@@ -6,42 +6,40 @@ import ShowTotals from "./ShowTotals";
 
 class Profile extends React.Component {
   render() {
+    // set some vars
+    const props = this.props;
+    const profile = props.profile;
+
     // if component is not ready show loading
-    if (this.props.profile.name) {
+    if (profile.name) {
       return (
         <Fragment>
-          <h1>Hi {this.props.profile.name.value}</h1>
-          <Link to={{ pathname: "/", name: this.props.profile.name.value }}>
+          <h1>Hi {profile.name.value}</h1>
+          <Link to={{ pathname: "/", name: profile.name.value }}>
             edit profile
           </Link>
 
           <ul>
-            {Object.keys(this.props.profile).map(key => {
+            {Object.keys(profile).map(key => {
               // filter if visibleOnProfile is true
-              if (this.props.profile[key].visibleOnProfile) {
+              if (profile[key].visibleOnProfile) {
                 return (
                   // show on profile
                   <li key={key}>
-                    {key}: {this.props.profile[key].value}
+                    {key}: {profile[key].value}
                   </li>
                 );
               }
             })}
           </ul>
 
-          <AddMealForm
-            addToList={this.props.addToList}
-            state={this.props.state}
-          />
-          <MealList meal={this.props.state.food} />
+          <AddMealForm addToList={props.addToList} state={props.state} />
+          <MealList meal={props.state.food} />
 
-          {this.props.state.total ? (
+          {props.state.total ? (
             <ShowTotals
-              total={this.props.state.total}
-              deltaKcal={
-                this.props.state.total -
-                this.props.profile.basalMetabolism.value
-              }
+              total={props.state.total}
+              deltaKcal={props.state.total - profile.basalMetabolism.value}
             />
           ) : null}
         </Fragment>

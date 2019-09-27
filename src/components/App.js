@@ -9,6 +9,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
+    // if localStorage has item with selected name setState with data
     const localStorageRef = localStorage.getItem(this.props.match.params.name);
     this.setState({ profile: JSON.parse(localStorageRef) });
   }
@@ -16,7 +17,7 @@ class App extends React.Component {
   checkStatus() {
     const localStorageRef = localStorage.getItem(this.props.match.params.name);
     let showProfile = true;
-    // if localStora exist show Profile else show BackToPicker
+    // if localStorage exist show Profile else show BackToPicker
     localStorageRef ? (showProfile = true) : (showProfile = false);
     return showProfile;
   }
