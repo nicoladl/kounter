@@ -15,9 +15,7 @@ class Profile extends React.Component {
       return (
         <Fragment>
           <h1>Hi {profile.name.value}</h1>
-          <Link to={{ pathname: "/", name: profile.name.value }}>
-            edit profile
-          </Link>
+          <Link to={{ pathname: "/", profile: profile }}>edit profile</Link>
 
           <ul>
             {Object.keys(profile).map(key => {
