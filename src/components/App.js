@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import base from "../firebase";
 import Profile from "./Profile";
 
 class App extends React.Component {
@@ -11,7 +12,15 @@ class App extends React.Component {
   componentDidMount() {
     // if localStorage has item with selected name setState with data
     const localStorageRef = localStorage.getItem(this.props.match.params.name);
-    this.setState({ profile: JSON.parse(localStorageRef) });
+    if (localStorageRef) {
+      const localStorage = JSON.parse(localStorageRef);
+      this.setState({ profile: localStorage });
+    }
+
+    // post to database
+    base.post(`${this.props.match.params.name}/profile`, {
+      data: JSON.parse(localStorageRef)
+    });
   }
 
   checkStatus() {
@@ -25,6 +34,16 @@ class App extends React.Component {
   addToList = (food, total) => {
     // update state
     this.setState({ food, total });
+
+    // post to database
+    base.post(`${this.props.match.params.name}/food`, {
+      data: food
+    });
+
+    // post to database
+    base.post(`${this.props.match.params.name}/total`, {
+      data: total
+    });
   };
 
   render() {

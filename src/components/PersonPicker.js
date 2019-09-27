@@ -20,11 +20,13 @@ class NamePicker extends React.Component {
       const profile = JSON.parse(localStorage.getItem(inputChar));
 
       // update form value
-      this.nameFromInput.current.value = profile.name.value;
-      this.weightFromInput.current.value = profile.weight.value;
-      this.genderFromInput.current.value = profile.gender.value;
-      this.ageFromInput.current.value = profile.age.value;
-      this.heightFromInput.current.value = profile.height.value;
+      if (profile) {
+        this.nameFromInput.current.value = profile.name.value;
+        this.weightFromInput.current.value = profile.weight.value;
+        this.genderFromInput.current.value = profile.gender.value;
+        this.ageFromInput.current.value = profile.age.value;
+        this.heightFromInput.current.value = profile.height.value;
+      }
     }
   };
 
