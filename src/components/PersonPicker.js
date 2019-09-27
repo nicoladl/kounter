@@ -9,8 +9,8 @@ class NamePicker extends React.Component {
   heightFromInput = React.createRef();
 
   calculateBasalMetabolism = e => {
-    // block event
-    e.preventDefault();
+    e.preventDefault(); // block event
+
     // get input value and store into object
     const profile = {
       name: {
@@ -71,7 +71,12 @@ class NamePicker extends React.Component {
         <br />
         <label>
           Weight:
-          <input type="number" name="weight" ref={this.weightFromInput} />
+          <input
+            type="number"
+            min="0"
+            name="weight"
+            ref={this.weightFromInput}
+          />
         </label>
         <br />
         <label>
@@ -84,12 +89,17 @@ class NamePicker extends React.Component {
         <br />
         <label>
           age:
-          <input type="number" name="age" ref={this.ageFromInput} />
+          <input type="number" min="0" name="age" ref={this.ageFromInput} />
         </label>
         <br />
         <label>
           height:
-          <input type="number" name="height" ref={this.heightFromInput} />
+          <input
+            type="number"
+            min="0"
+            name="height"
+            ref={this.heightFromInput}
+          />
         </label>
         <br />
 
