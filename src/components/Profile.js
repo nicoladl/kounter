@@ -2,9 +2,11 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import AddMealForm from "./AddMealForm";
 import MealList from "./MealList";
+import ShowTotals from "./ShowTotals";
 
 class Profile extends React.Component {
   render() {
+    // if component is not ready show loading
     if (this.props.profile.name) {
       return (
         <Fragment>
@@ -12,10 +14,13 @@ class Profile extends React.Component {
           <Link to={{ pathname: "/", name: this.props.profile.name.value }}>
             edit profile
           </Link>
+
           <ul>
             {Object.keys(this.props.profile).map(key => {
+              // filter if visibleOnProfile is true
               if (this.props.profile[key].visibleOnProfile) {
                 return (
+                  // show on profile
                   <li key={key}>
                     {key}: {this.props.profile[key].value}
                   </li>
@@ -31,28 +36,13 @@ class Profile extends React.Component {
           <MealList meal={this.props.state.food} />
 
           {this.props.state.total ? (
-            <div>
-              <p>Total in: {this.props.state.total}kcal</p>
-              <p>
-                Total amount of calories:{" "}
-                <strong>
-                  {this.props.state.total -
-                    this.props.profile.basalMetabolism.value}
-                  Kcal{" "}
-                  {this.props.state.total -
-                    this.props.profile.basalMetabolism.value >
-                  0 ? (
-                    <span role="img" aria-label="happy">
-                      &#128533;
-                    </span>
-                  ) : (
-                    <span role="img" aria-label="sad">
-                      &#128515;
-                    </span>
-                  )}
-                </strong>
-              </p>
-            </div>
+            <ShowTotals
+              total={this.props.state.total}
+              deltaKcal={
+                this.props.state.total -
+                this.props.profile.basalMetabolism.value
+              }
+            />
           ) : null}
         </Fragment>
       );
