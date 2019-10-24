@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/kounter/static/js/main.42eeb0b2.chunk.js",
-    "main.js.map": "/kounter/static/js/main.42eeb0b2.chunk.js.map",
+    "main.js": "/kounter/static/js/main.27d97a1e.chunk.js",
+    "main.js.map": "/kounter/static/js/main.27d97a1e.chunk.js.map",
     "runtime~main.js": "/kounter/static/js/runtime~main.125387c4.js",
     "runtime~main.js.map": "/kounter/static/js/runtime~main.125387c4.js.map",
-    "static/js/2.8fb1e963.chunk.js": "/kounter/static/js/2.8fb1e963.chunk.js",
-    "static/js/2.8fb1e963.chunk.js.map": "/kounter/static/js/2.8fb1e963.chunk.js.map",
+    "static/js/2.42c9657f.chunk.js": "/kounter/static/js/2.42c9657f.chunk.js",
+    "static/js/2.42c9657f.chunk.js.map": "/kounter/static/js/2.42c9657f.chunk.js.map",
     "index.html": "/kounter/index.html",
-    "precache-manifest.595ac562d621314598be37736a9cbeec.js": "/kounter/precache-manifest.595ac562d621314598be37736a9cbeec.js",
+    "precache-manifest.ed4ae9ce12492a434fcb8f0f0bcaf687.js": "/kounter/precache-manifest.ed4ae9ce12492a434fcb8f0f0bcaf687.js",
     "service-worker.js": "/kounter/service-worker.js"
   }
 }
