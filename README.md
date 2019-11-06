@@ -1,4 +1,4 @@
-[DEMO] (https://nicoladl.github.io/kounter/)
+[DEMO](https://nicoladl.github.io/kounter/)
 
 ## Configuration
 
