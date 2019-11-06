@@ -87,6 +87,7 @@ class NamePicker extends React.Component {
           <input
             type="text"
             name="name"
+            required
             ref={this.nameFromInput}
             defaultValue={
               this.props.location.profile
@@ -100,6 +101,8 @@ class NamePicker extends React.Component {
         <label>
           Gender:
           <select
+            name="gender"
+            required
             ref={this.genderFromInput}
             defaultValue={
               this.props.location.profile
@@ -113,11 +116,12 @@ class NamePicker extends React.Component {
         </label>
         <br />
         <label>
-          age:
+          Age:
           <input
             type="number"
             min="0"
             name="age"
+            required
             ref={this.ageFromInput}
             defaultValue={
               this.props.location.profile
@@ -133,6 +137,7 @@ class NamePicker extends React.Component {
             type="number"
             min="0"
             name="weight"
+            required
             ref={this.weightFromInput}
             defaultValue={
               this.props.location.profile
@@ -143,11 +148,12 @@ class NamePicker extends React.Component {
         </label>
         <br />
         <label>
-          height (cm):
+          Height (cm):
           <input
             type="number"
             min="0"
             name="height"
+            required
             ref={this.heightFromInput}
             defaultValue={
               this.props.location.profile

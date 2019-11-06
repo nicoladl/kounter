@@ -28,7 +28,7 @@ class Profile extends React.Component {
             .map(key => {
               return (
                 // show on profile and add correct unit misure
-                <li key={key}>
+                <li key={key} data-key={profile[key].value}>
                   {key}: {profile[key].value}
                   {key === "weight" ? " kg" : null}
                   {key === "height" ? " cm" : null}
