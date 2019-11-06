@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://nicoladl.github.io/kounter",
   "dependencies": {
+    "cypress": "^3.6.0",
     "firebase": "^6.6.1",
     "gh-pages": "^2.1.1",
     "re-base": "^4.0.0",
@@ -16,9 +17,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "cypress": "cypress open",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "npm run build && gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
