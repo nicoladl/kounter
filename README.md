@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[DEMO] (https://nicoladl.github.io/kounter/)
 
 ## Configuration
 
@@ -26,3 +26,7 @@ You will also see any lint errors in the console.
 ### `npm run deploy`
 
 Builds the app for production and merge everything to gh-pages branch. This branch is live on production with a Github Page.
+
+#### Note
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
