@@ -2,16 +2,10 @@
 
 context('Local Storage', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/#/')
+    cy
+      .visit('http://localhost:3000/#/')
+      .fixture('user_female').as('female')
   })
-
-  const allFields = {
-    name: 'test',
-    gender: 'female',
-    age: 50,
-    weight: 90,
-    height: 160
-  }
 
   // Although local storage is automatically cleared
   // in between tests to maintain a clean state
@@ -19,30 +13,36 @@ context('Local Storage', () => {
 
   it('Fill a new item into localStorage', () => {
     // clearLocalStorage() yields the localStorage object
-    cy.clearLocalStorage().should((ls) => {
-      cy
-        .get('input[name=name]').type(allFields.name)
-        .get('select[name=gender]').select(allFields.gender)
-        .get('input[name=age]').type(allFields.age)
-        .get('input[name=weight]').type(allFields.weight)
-        .get('input[name=height]').type(allFields.height)
-        .get('form').submit()
-        .should(() => {
-          expect(localStorage.getItem('test')).to.eq(`{"name":{"value":"${allFields.name}","visibleOnProfile":false},"slug":{"value":"${allFields.name}","visibleOnProfile":false},"weight":{"value":"${allFields.weight}","visibleOnProfile":true},"gender":{"value":"${allFields.gender}","visibleOnProfile":true},"age":{"value":"${allFields.age}","visibleOnProfile":true},"height":{"value":"${allFields.height}","visibleOnProfile":true},"basalMetabolism":{"value":1598,"visibleOnProfile":true}}`)
+    cy.get('@female')
+      .then(female => {
+        cy.clearLocalStorage().should((ls) => {
+          cy
+            .get('input[name=name]').type(female.name)
+            .get('select[name=gender]').select(female.gender)
+            .get('input[name=age]').type(female.age)
+            .get('input[name=weight]').type(female.weight)
+            .get('input[name=height]').type(female.height)
+            .get('form').submit()
+            .should(() => {
+              expect(localStorage.getItem('test')).to.eq(`{"name":{"value":"${female.name}","visibleOnProfile":false},"slug":{"value":"${female.name}","visibleOnProfile":false},"weight":{"value":"${female.weight}","visibleOnProfile":true},"gender":{"value":"${female.gender}","visibleOnProfile":true},"age":{"value":"${female.age}","visibleOnProfile":true},"height":{"value":"${female.height}","visibleOnProfile":true},"basalMetabolism":{"value":1598,"visibleOnProfile":true}}`)
+            })
         })
-    })
+      })
   })
 
   it('Fill and clear localStorage', () => {
-    cy
-      .get('input[name=name]').type(allFields.name)
-      .get('select[name=gender]').select(allFields.gender)
-      .get('input[name=age]').type(allFields.age)
-      .get('input[name=weight]').type(allFields.weight)
-      .get('input[name=height]').type(allFields.height)
-      .get('form').submit()
-      .clearLocalStorage(allFields.name).should((ls) => {
-        expect(ls.getItem('test')).to.be.null
+    cy.get('@female')
+      .then(female => {
+        cy
+          .get('input[name=name]').type(female.name)
+          .get('select[name=gender]').select(female.gender)
+          .get('input[name=age]').type(female.age)
+          .get('input[name=weight]').type(female.weight)
+          .get('input[name=height]').type(female.height)
+          .get('form').submit()
+          .clearLocalStorage(female.name).should((ls) => {
+            expect(ls.getItem('test')).to.be.null
+          })
       })
   })
 })
