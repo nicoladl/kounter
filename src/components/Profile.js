@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import AddMealForm from "./AddMealForm";
 import MealList from "./MealList";
@@ -16,23 +16,26 @@ class Profile extends React.Component {
     }
 
     return (
-      <Fragment>
+      <>
         <h1>Hi {profile.name.value}</h1>
         <Link to={{ pathname: "/", profile: profile }}>edit profile</Link>
 
         <ul>
-          {Object.keys(profile).forEach(key => {
+          {Object.keys(profile)
             // filter if visibleOnProfile is true
-            if (profile[key].visibleOnProfile) {
+            .filter(key => profile[key].visibleOnProfile)
+            // iterate through all the items
+            .map(key => {
               return (
-                // show on profile
+                // show on profile and add correct unit misure
                 <li key={key}>
-                  {key}: {profile[key].value} {key === "weight" ? "kg" : null}
-                  {key === "height" ? "cm" : null}
+                  {key}: {profile[key].value}
+                  {key === "weight" ? " kg" : null}
+                  {key === "height" ? " cm" : null}
+                  {key === "basalMetabolism" ? " Kcal" : null}
                 </li>
               );
-            }
-          })}
+            })}
         </ul>
 
         <AddMealForm addToList={props.addToList} state={props.state} />
@@ -44,7 +47,7 @@ class Profile extends React.Component {
             deltaKcal={props.state.total - profile.basalMetabolism.value}
           />
         ) : null}
-      </Fragment>
+      </>
     );
   }
 }

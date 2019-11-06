@@ -7,7 +7,7 @@ class MealList extends React.Component {
         {this.props.meal.map((value, index) => {
           return (
             <li key={index}>
-              {value.name} {value.kcal}Kcal
+              {value.name} {value.kcal} Kcal
             </li>
           );
         })}
