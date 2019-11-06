@@ -3,42 +3,41 @@
 context('Local Storage', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/#/')
+      .fixture('user_female').as('female')
   })
 
-  const allFields = {
-    name: 'test',
-    gender: 'female',
-    age: 50,
-    weight: 90,
-    height: 160
-  }
-
   it('check the redirect to page profile', () => {
-    cy.clearLocalStorage().should((ls) => {
-      cy
-        .get('input[name=name]').type(allFields.name)
-        .get('select[name=gender]').select(allFields.gender)
-        .get('input[name=age]').type(allFields.age)
-        .get('input[name=weight]').type(allFields.weight)
-        .get('input[name=height]').type(allFields.height)
-        .get('form').submit()
-        .url().should('include', `/counter/${allFields.name}`)
-    })
+    cy.get('@female')
+      .then(female => {
+        cy.clearLocalStorage().should((ls) => {
+          cy
+            .get('input[name=name]').type(female.name)
+            .get('select[name=gender]').select(female.gender)
+            .get('input[name=age]').type(female.age)
+            .get('input[name=weight]').type(female.weight)
+            .get('input[name=height]').type(female.height)
+            .get('form').submit()
+            .url().should('include', `/counter/${female.name}`)
+        })
+      })
   })
 
   it('compile form and test required fields', () => {
-    cy.clearLocalStorage().should((ls) => {
-      cy
-        .get('input[name=name]').type(allFields.name)
-        .get('select[name=gender]').select(allFields.gender)
-        .get('input[name=age]').type(allFields.age)
-        .get('input[name=weight]').type(allFields.weight)
-        .get('input[name=height]').type(allFields.height)
-        .get('form').submit()
-        .get(`li[data-key="${allFields.gender}"]`).contains(allFields.gender)
-        .get(`li[data-key="${allFields.age}"]`).contains(allFields.age)
-        .get(`li[data-key="${allFields.weight}"]`).contains(allFields.weight)
-        .get(`li[data-key="${allFields.height}"]`).contains(allFields.height)
-    })
+    cy.get('@female')
+      .then(female => {
+        cy.clearLocalStorage().should((ls) => {
+          cy
+            .get('input[name=name]').type(female.name)
+            .get('select[name=gender]').select(female.gender)
+            .get('input[name=age]').type(female.age)
+            .get('input[name=weight]').type(female.weight)
+            .get('input[name=height]').type(female.height)
+            .get('form').submit()
+            .get(`li[data-key="${female.gender}"]`).contains(female.gender)
+            .get(`li[data-key="${female.age}"]`).contains(female.age)
+            .get(`li[data-key="${female.weight}"]`).contains(female.weight)
+            .get(`li[data-key="${female.height}"]`).contains(female.height)
+        })
+      })
   })
 })
