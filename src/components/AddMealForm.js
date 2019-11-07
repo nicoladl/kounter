@@ -34,7 +34,7 @@ class AddMealForm extends React.Component {
         <br />
         kcal <input name="kcal" type="number" ref={this.kcalFromInput} />
         <br />
-        <button>add</button>
+        <button type="submit">add</button>
       </form>
     );
   }

@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-context('Local Storage', () => {
+context('Form', () => {
   beforeEach(() => {
     cy.visit('/')
       .fixture('user_female').as('female')
