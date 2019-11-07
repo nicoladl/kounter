@@ -18,6 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "cypress": "cypress open",
+    "cypress:run": "cypress run --record --key 96dad3ba-d011-40ed-99de-5505d7af57ce",
     "eject": "react-scripts eject",
     "deploy": "npm run build && gh-pages -d build"
   },
