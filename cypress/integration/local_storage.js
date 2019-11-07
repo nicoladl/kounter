@@ -33,6 +33,7 @@ context('Local Storage', () => {
   it('Fill and clear localStorage', () => {
     cy.get('@female')
       .then(female => {
+        // check if the localStorage is null after a delete  
         cy
           .get('input[name=name]').type(female.name)
           .get('select[name=gender]').select(female.gender)

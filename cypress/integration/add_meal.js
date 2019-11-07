@@ -17,6 +17,7 @@ context('Food counter', () => {
 
     cy.get('@female')
       .then(female => {
+        // clear the localStorage and fill up the profile
         cy.clearLocalStorage().should((ls) => {
           cy
             .get('input[name=name]').type(female.name)
@@ -56,8 +57,10 @@ context('Food counter', () => {
 
         cy.get('@female')
           .then(female => {
+            // calculate the female metabolism
             const basalMetabolism = 665 + 9.6 * female.weight + 1.9 * female.height - 4.7 * female.age
 
+            // check if the sum is correct
             cy
               .get('.total-sum')
               .contains(totalKcal - basalMetabolism)

@@ -25,7 +25,9 @@ context('Form', () => {
   it('compile form and test required fields', () => {
     cy.get('@female')
       .then(female => {
+        // clear the localStorage and fill up the profile
         cy.clearLocalStorage().should((ls) => {
+          // check if the list is valorized
           cy
             .get('input[name=name]').type(female.name)
             .get('select[name=gender]').select(female.gender)
