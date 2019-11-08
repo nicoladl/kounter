@@ -9,9 +9,11 @@
     "gh-pages": "^2.1.1",
     "re-base": "^4.0.0",
     "react": "^16.9.0",
+    "react-app-polyfill": "^1.0.4",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.1"
+    "react-scripts": "3.1.1",
+    "testcafe": "^1.6.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -27,14 +29,17 @@
   },
   "browserslist": {
     "production": [
+      "ie 11",
       ">0.2%",
       "not dead",
       "not op_mini all"
     ],
     "development": [
+      "ie 11",
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }
