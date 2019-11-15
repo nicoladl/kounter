@@ -1,10 +1,10 @@
 // FOOD Reducer
-const food = (state = {}, action) => {
+const food = (state = { food: [], total: 0 }, action) => {
   switch (action.type) {
     case 'ADD_FOOD':
       return {
-        ...state,
-        food: action.food
+        food: [...state.food, action.food],
+        total: state.total + action.food.kcal
       }
     default:
       return state

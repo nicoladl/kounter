@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from 'react-redux'
-import base from "../firebase";
 import Profile from "./Profile";
+import base from "../firebase";
 import { addProfile } from '../actions'
 
 export default function Dashboard(props) {
@@ -35,32 +35,14 @@ export default function Dashboard(props) {
     return showProfile;
   }
 
-  const addToList = (food, total) => {
-    // update state
-    this.setState({ food, total });
-
-    // post to database
-    base.post(`${props.match.params.name}/food`, {
-      data: food
-    });
-
-    // post to database
-    base.post(`${props.match.params.name}/total`, {
-      data: total
-    });
-  };
-
   checkLocalStorage()
-  if (checkStatus()) {
+  if (!checkStatus()) {
     return (
       <>
-        <Profile
-          state={state}
-          addToList={addToList}
-        // total={this.total}
-        />
+        <p>data not found</p>
+        <Link to="/">back to data</Link>
       </>
-    );
+    )
   }
-  return <Link to="/">back to data</Link>;
+  return <Profile state={state} />
 }

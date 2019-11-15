@@ -8,6 +8,7 @@ import ShowTotals from "./ShowTotals";
 export default function Profile(props) {
   // get profile from Store
   const profile = useSelector(state => state.profile.userProfile)
+  const total = useSelector(state => state.food.total)
 
   // if component is not ready show loading
   if (!profile.name) {
@@ -19,7 +20,7 @@ export default function Profile(props) {
       <h1>Hi {profile.name.value}</h1>
       <Link to={{ pathname: "/", profile: profile }}>edit profile</Link>
 
-      <ul>
+      <ul className="profile">
         {Object.keys(profile)
           // filter if visibleOnProfile is true
           .filter(key => profile[key].visibleOnProfile)
@@ -40,15 +41,15 @@ export default function Profile(props) {
           })}
       </ul>
 
-      <AddMealForm addToList={props.addToList} state={props.state} />
-      <MealList meal={props.state.food} />
+      <AddMealForm />
+      {total > 0 && <MealList />}
 
-      {props.state.total ? (
+      {total > 0 && (
         <ShowTotals
-          total={props.state.total}
-          deltaKcal={props.state.total - profile.basalMetabolism.value}
+          total={total}
+          deltaKcal={total - profile.basalMetabolism.value}
         />
-      ) : null}
+      )}
     </>
   );
 }

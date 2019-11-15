@@ -1,43 +1,48 @@
 import React from "react";
+import { useDispatch, useSelector } from 'react-redux'
+// import base from "../firebase";
+import { addFood } from '../actions'
 
-class AddMealForm extends React.Component {
-  mealFromInput = React.createRef();
-  kcalFromInput = React.createRef();
+export default function AddMealForm(props) {
+  const dispatch = useDispatch()
+  // const profile = useSelector(state => state.profile.userProfile)
+  // const food = useSelector(state => state.food)
+  const mealFromInput = React.createRef();
+  const kcalFromInput = React.createRef();
 
-  addToList = e => {
+  const addToList = e => {
     // stop preventing form
     e.preventDefault();
     // add to state
     const meal = {
-      name: this.mealFromInput.current.value,
-      kcal: parseInt(this.kcalFromInput.current.value)
+      name: mealFromInput.current.value,
+      kcal: parseInt(kcalFromInput.current.value)
     };
 
-    // copy state
-    const food = [...this.props.state.food];
-    // add item to list
-    food.push(meal);
-    // calc total kcal
-    const total = food.reduce((sum, item) => {
-      return sum + item.kcal;
-    }, 0);
-    // update state
-    this.props.addToList(food, total);
+    // dispatch to Redux
+    dispatch(addFood(meal))
+
+    // post to database
+    // base.post(`${profile.name.value}/food`, {
+    //   data: food
+    // });
+
+    // post to database
+    // base.post(`${props.match.params.name}/total`, {
+    //   data: total
+    // });
+
     // refresh the form
     e.currentTarget.reset();
   };
 
-  render() {
-    return (
-      <form onSubmit={this.addToList}>
-        nome <input name="meal" type="text" ref={this.mealFromInput} />
-        <br />
-        kcal <input name="kcal" type="number" ref={this.kcalFromInput} />
-        <br />
-        <button type="submit">add</button>
-      </form>
-    );
-  }
+  return (
+    <form onSubmit={addToList}>
+      nome <input name="meal" type="text" ref={mealFromInput} />
+      <br />
+      kcal <input name="kcal" type="number" ref={kcalFromInput} />
+      <br />
+      <button type="submit">add</button>
+    </form>
+  );
 }
-
-export default AddMealForm;
