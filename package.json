@@ -19,7 +19,7 @@
     "testcafe-browser-provider-browserstack": "^1.9.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "cross-env NODE_ENV=development react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "cypress": "cypress open",
@@ -44,5 +44,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "cross-env": "^6.0.3"
+  }
 }
