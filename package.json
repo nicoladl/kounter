@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development react-scripts start",
-    "build": "react-scripts build",
+    "build": "cross-env NODE_ENV=production react-scripts build",
     "test": "react-scripts test",
     "cypress": "cypress open",
     "cypress:run": "cypress run --record --key 96dad3ba-d011-40ed-99de-5505d7af57ce",
