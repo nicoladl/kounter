@@ -1,3 +1,5 @@
+### Project no longer supported
+
 # Basal Metabolism calculator
 
 :pizza: + :bicyclist: = [DEMO](https://nicoladl.github.io/kounter/)
