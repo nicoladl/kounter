@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://nicoladl.github.io/kounter",
   "dependencies": {
-    "cypress": "^3.6.0",
+    "cypress": "^12.7.0",
     "firebase": "^6.6.1",
     "gh-pages": "^2.1.1",
     "re-base": "^4.0.0",
@@ -16,7 +16,7 @@
     "react-scripts": "3.1.1",
     "redux": "^4.0.4",
     "testcafe": "^1.6.1",
-    "testcafe-browser-provider-browserstack": "^1.9.0"
+    "testcafe-browser-provider-browserstack": "^1.14.1"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development react-scripts start",
